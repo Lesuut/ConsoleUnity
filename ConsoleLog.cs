@@ -22,7 +22,7 @@ public class ConsoleLog : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mainTextDisplay;
 
     private string[] availableCommandsData = {
-        ">",
+        "",
         "help",
         "clear",
         "def",
@@ -68,6 +68,10 @@ public class ConsoleLog : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             EnterButton();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            ActiveConsoleWindowButtonUseButton();
         }
     }
     public void EnterButton()
@@ -176,5 +180,13 @@ public class ConsoleLog : MonoBehaviour
     {
         foreach (var item in objsConsole)
             item.SetActive(!item.activeSelf);
+    }
+    public void ActiveConsoleWindowButtonUseButton()
+    {
+        foreach (var item in objsConsole)
+        {
+            if (!item.activeSelf)
+                item.SetActive(true);
+        }
     }
 }
